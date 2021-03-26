@@ -1,0 +1,143 @@
+<html>
+<head>
+  <title>EmotionCalendar</title>
+ <style>
+  * {
+    box-sizing: border-box;
+  }
+  header {
+    background-color: #FA58F4;
+    padding: 5px;
+    text-align: center;
+    font-size: 15px;
+    color: white;
+  }
+   nav {
+  float: right;
+  width: 30%;
+  height: 400px; /* only for demonstration, should be removed */
+  background: #D8CEF6;
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+   article {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  background-color: #f1f1f1;
+  height: 400px; /* only for demonstration, should be removed */
+}
+
+  footer {
+    background-color: #F6CEEC;
+    padding: 5px;
+    text-align: center;
+    color: white;
+  }
+   
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+
+td {
+  text-align:center;
+  height:40px;
+}
+th {
+  height:30px;
+  background-color:rgba(0,0,255,0.3);
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>EmotionCalendar</h1>
+</header>
+<section>
+  <nav>
+    <p>감정분석<p>
+    <ul>
+      <li><a href="#">완전기쁨</a></li>
+      <li><a href="#">행복</a></li>
+      <li><a href="#">분노</a></li>
+      <li><a href="#">슬픔</a></li>
+      <li><a href="#">우울</a></li>
+      <li><a href="#">평범</a></li>
+    </ul>
+    
+    <p>음악추천<p>
+    <ul>
+      <li><a href="#">paly1</a></li>
+      <li><a href="#">paly2</a></li>
+      <li><a href="#">paly3</a></li>
+      <li><a href="#">paly4</a></li>
+    </ul>
+  </nav>
+      
+  <article>
+    <script type = "text/javascript">
+      var date = new Date();
+      var y = date.getFullYear();
+      var m = date.getMonth();
+      var d=date.getDate();
+      
+      var theDate = new Date(y,m,1);
+      var theDay = theDate.getDay();
+      
+      var last=[31,28,31,30,31,30,31,31,30,31,30,31];
+      if(y%4 && y%100 !=0 || y%200 == 0) lastDate=last[1]=29;
+      
+      var lastDate=last[m];
+      
+      var row = Math.ceil((theDay+lastDate)/7);
+      
+      document.write("<h1 align=center>"+y+"."+(m+1)+"</h1>");
+      
+      var calendar = "<table border=1 width=500 cellpadding=0 cellspacing=0 align=center>";
+      calendar+="<tr>";
+      calendar+="<th>일</th>";
+      calendar+="<th>월</th>";
+      calendar+="<th>화</th>";
+      calendar+="<th>수</th>";
+      calendar+="<th>목</th>";
+      calendar+="<th>금</th>";
+      calendar+="<th>토</th>";
+      calendar+="</tr>";
+      
+      var dNum=1;
+      
+      for(var i=1;i<=row;i++){
+          calendar+="<tr>";
+          
+          for(var k=1;k<=7;k++){
+              if(i==1&&k<=theDay||dNum>lastDate){
+                  calendar+="<td>&nbsp;</td>";
+              }
+              else{
+                  calendar+="<td>"+dNum+"</td>";
+                  dNum++;	
+              }
+           
+          }
+          calendar+="</tr>";
+      }
+      calendar+="</table>";
+  
+      document.write(calendar);
+      
+  </script>
+  </script>
+  </article>
+</section>  
+ <footer>
+  <p>S.saw</p>
+  <p>김신영,류현석,탁은영,박유민</p>  
+</footer>
