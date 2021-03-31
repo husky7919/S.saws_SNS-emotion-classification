@@ -1,12 +1,28 @@
 <html>
 <head>
-  <title>EmotionCalendar</title>
- <style>
+  <title>2021캡스톤프로젝트</title>
+  <meta charset = "UTF-8">
+<style>
+  
+  @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+  
+
+  #title{
+      font-family: 'Lobster', cursive;
+      font-size:3.5em;
+      letter-spacing:10pt;
+  }
+
+  #sub_title{
+    font-family: 'Lobster', cursive;
+      font-size:1.5em;
+  }
+
   * {
     box-sizing: border-box;
   }
   header {
-    background-color: #FA58F4;
+    background: linear-gradient(to right, #8a2387, #e94057, #f27121);
     padding: 5px;
     text-align: center;
     font-size: 15px;
@@ -34,10 +50,11 @@ nav ul {
 }
 
   footer {
-    background-color: #F6CEEC;
+    background-color: #b4a3b0de;
     padding: 5px;
     text-align: center;
     color: white;
+    
   }
    
 @media (max-width: 600px) {
@@ -46,7 +63,10 @@ nav ul {
     height: auto;
   }
 }
-
+.blueText {
+  width:480px;
+  margin:auto auto;
+}
 td {
   text-align:center;
   height:40px;
@@ -56,88 +76,188 @@ th {
   background-color:rgba(0,0,255,0.3);
 }
 </style>
+
+<script language="javascript">
+
+  var today = new Date();
+  var year = today.getFullYear();
+  var month = today.getMonth();
+  var day = today.getDay();
+
+  month += 1;
+
+  function dayy(year, month){ //월의 일수를 구함
+      switch(month){
+          case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+          return 31;
+
+          case 4: case 6: case 9: case 11:
+          return 30;
+
+          case 2:
+          if(((year%400)==0||(year%4)==0&&(year%100)!=0)){
+              return 29;
+          }
+          else{
+              return 28;
+          }
+      }
+      
+  } 
+
+  function prevmonth(){ //이전 월로 가는 함수
+  
+  var ymda = document.getElementById("prev");
+  var yg = document.getElementById("Ymd");
+
+  month--; //month를 계속 감소시켜준다
+  if(month < 1){ // month가 1보다 작아지면
+      month = 12; // month를 12로 만들어줌
+      year -= 1; //year를 1 감소시켜준다
+  }
+  if(year < 1970){ //1970년 밑으로는 내려가지 않음..
+      alert("기원전");
+       for(var i=1;i<100;i--){
+      window.top.moveTo(i ,i *=-1);
+      }
+  }
+
+  var ymda = year + "년" + (month)+"월";
+    present();
+  } 
+
+  function nextmonth(){  //다음 월로 가는 함수
+        
+  var ymda = document.getElementById("next");
+  var yg = document.getElementById("Ymd");
+
+  month++; //month 를 계속 증가시켜줌
+  if(month > 12){ //만약 month가 12를 넘어가면
+      month = 1; // month를 1로 만듦
+      year += 1; //year을 1 증가시켜준다
+  }
+
+  var ymda = year + "년" + month+"월";
+    present(); //present()함수를 호출하여 다시 찍어줌
+  }
+
+  function present(){
+  
+  var start = new Date(year, month-1, 1);
+  var ymda = document.getElementById("Ymd");
+  var Tab = document.getElementById("tab");
+  
+
+  var row = null;
+  var cnt = 0;
+  
+  
+  var ym = year + "년" + (month)+"월";
+
+  ymda.innerHTML = ym;
+
+  while(tab.rows.length >2){     //테이블의 행의 길이가 2보다 크면 테이블의 행 제거함.
+      tab.deleteRow(tab.rows.length -1);
+  }
+
+  row = Tab.insertRow();
+  
+
+  for(var j = 0; j<start.getDay(); j++){ //달력의 시작 일 구함
+      cell = row.insertCell();
+      cnt+=1;
+  }
+
+  for(var i = 0; i< dayy(year, month); i++){ //달력 일수만큼 찍어줌
+  cell = row.insertCell();
+  cell.innerHTML = i+1;
+  cnt += 1;
+
+  if(cnt%7 ==0){ //cnt가 7이면 행을 늘려줌
+      row = tab.insertRow();
+      
+  }
+}
+
+}
+</script>
 </head>
+
 <body>
 <header>
-  <h1>EmotionCalendar</h1>
+  <h1 id="title">EmotionCalendar</h1>
 </header>
 <section>
   <nav>
-    <p>감정분석<p>
+    <p id="sub_title">Estimation Analysis</p>
+    <p id="name">
+      <ul>
+        <li><a href="#">😆완전기쁨</a></li>
+        <li><a href="#">😄행복</a></li>
+        <li><a href="#">😡분노</a></li>
+        <li><a href="#">😢슬픔</a></li>
+        <li><a href="#">😔우울</a></li>
+        <li><a href="#">🙂평범</a></li>
+      </ul>
+    </p>
+      
+    <hr style="border: solid 1px gray;">
+    <p id="sub_title">Music Recommend<p>
     <ul>
-      <li><a href="#">완전기쁨</a></li>
-      <li><a href="#">행복</a></li>
-      <li><a href="#">분노</a></li>
-      <li><a href="#">슬픔</a></li>
-      <li><a href="#">우울</a></li>
-      <li><a href="#">평범</a></li>
-    </ul>
-    
-    <p>음악추천<p>
-    <ul>
-      <li><a href="#">paly1</a></li>
-      <li><a href="#">paly2</a></li>
-      <li><a href="#">paly3</a></li>
-      <li><a href="#">paly4</a></li>
+      <li><a href="#">🎶play1</a></li>
+      <li><a href="#">🎶play2</a></li>
+      <li><a href="#">🎶play3</a></li>
+      <li><a href="#">🎶play4</a></li>
     </ul>
   </nav>
       
   <article>
-    <script type = "text/javascript">
-      var date = new Date();
-      var y = date.getFullYear();
-      var m = date.getMonth();
-      var d=date.getDate();
+    <table class = "blueText" border="1" id = "tab">
+      <tr>
+          <td align="center" id="prev" style="width:65px;"><label onclick="prevmonth()">≤</td>
+          <td colspan="5" align="center" id="Ymd" style="width: 150px; height: 30px;"></td>
+          <td align="center" id="next" style="width: 65px;"><label onclick="nextmonth()">≥</td>
+      </tr>
       
-      var theDate = new Date(y,m,1);
-      var theDay = theDate.getDay();
-      
-      var last=[31,28,31,30,31,30,31,31,30,31,30,31];
-      if(y%4 && y%100 !=0 || y%200 == 0) lastDate=last[1]=29;
-      
-      var lastDate=last[m];
-      
-      var row = Math.ceil((theDay+lastDate)/7);
-      
-      document.write("<h1 align=center>"+y+"."+(m+1)+"</h1>");
-      
-      var calendar = "<table border=1 width=500 cellpadding=0 cellspacing=0 align=center>";
-      calendar+="<tr>";
-      calendar+="<th>일</th>";
-      calendar+="<th>월</th>";
-      calendar+="<th>화</th>";
-      calendar+="<th>수</th>";
-      calendar+="<th>목</th>";
-      calendar+="<th>금</th>";
-      calendar+="<th>토</th>";
-      calendar+="</tr>";
-      
-      var dNum=1;
-      
-      for(var i=1;i<=row;i++){
-          calendar+="<tr>";
           
-          for(var k=1;k<=7;k++){
-              if(i==1&&k<=theDay||dNum>lastDate){
-                  calendar+="<td>&nbsp;</td>";
-              }
-              else{
-                  calendar+="<td>"+dNum+"</td>";
-                  dNum++;	
-              }
-           
-          }
-          calendar+="</tr>";
-      }
-      calendar+="</table>";
-  
-      document.write(calendar);
+      <tr align="center">
+          <td align="center">일</td>
+          <td align="center">월</td>
+          <td align="center">화</td>
+          <td align="center">수</td>
+          <td align="center">목</td>
+          <td align="center">금</td>
+          <td align="center">토</td>
+          
+      </tr>
       
+  </table>
+  <script type="text/javascript">
+    present();
   </script>
-  </script>
+
+
+
   </article>
 </section>  
  <footer>
-  <p>S.saw</p>
-  <p>김신영,류현석,탁은영,박유민</p>  
+  <div align="left"> 
+    Kim Shin Young <br>
+    Ryu Hyun-suk<br>
+    Tak Eun-young<br>
+    Park You Min<br>
+  </div>  
+  
+  <hr style="border: solid 1px gray;">
+  <div align="center"> 
+    <img src = "ssaw.png" alt="그림이 존재하지 않습니다." width="80" ;>
+    <img src = "./logo/band.png" alt="그림이 존재하지 않습니다." width="30" ;>
+    <img src = "./logo/instagram.png" alt="그림이 존재하지 않습니다." width="30" ;>
+    <img src = "./logo/facebook.png" alt="그림이 존재하지 않습니다." width="30" ;>
+    <img src = "./logo/twitter.png" alt="그림이 존재하지 않습니다." width="30" ;>
+    <img src = "./logo/youtube.png" alt="그림이 존재하지 않습니다." width="30" ;>
+    <img src = "./logo/kakao.png" alt="그림이 존재하지 않습니다." width="30" ;>
+    <img src = "./logo/kakaostory.png" alt="그림이 존재하지 않습니다." width="30" ;>
+    </div>
+  <h8>ⓒ 2021 | S.Saws_ai_project</h8>
 </footer>
