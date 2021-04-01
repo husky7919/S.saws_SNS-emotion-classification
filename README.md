@@ -1,1 +1,1 @@
-# S.saws_SNS-emotion-classification
+# SNS-emotion-classification
