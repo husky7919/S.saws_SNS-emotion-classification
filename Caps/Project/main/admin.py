@@ -1,12 +1,18 @@
 from django.contrib import admin
-from .models import Calender,Guest
+from .models import Posting, MusicBox
 # Register your models here.
-class CalenderAdmin(admin.ModelAdmin):
-    list_display=['id','insta_id','emotion','pub_date']
 
-admin.site.register(Calender,CalenderAdmin)
 
-class GuestAdmin(admin.ModelAdmin):
-    list_display=['id','insta']
+#감정에 따른 음악
+class MusicBoxAdmin(admin.ModelAdmin):
+    list_display=['id', 'emoti', 'url']
 
-admin.site.register(Guest, GuestAdmin)
+admin.site.register(MusicBox, MusicBoxAdmin)
+
+
+#인스타 게시물 크롤링
+class PostingAdmin(admin.ModelAdmin):
+    list_display=['id','insta','post','pub_date']
+
+admin.site.register(Posting, PostingAdmin)
+

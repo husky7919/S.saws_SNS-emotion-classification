@@ -1,8 +1,8 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
-app_name = 'main'
-
+app_name ='main'
 urlpatterns=[
-   path('',views.result,name='result'),
- ]
+   
+    path('calendar/', views.showcalendar, name='calendar'),
+]

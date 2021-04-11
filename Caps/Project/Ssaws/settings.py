@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main.apps.MainConfig',
+    'main',
 
 ]
 
@@ -98,22 +98,22 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-DATE_INPUT_FORMATS=['%d-%m-%Y']
+#DATE_INPUT_FORMATS=['%Y-%m-%d']
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 #한글로 변경
-LANGUAGE_CODE = 'ko-kr'
+LANGUAGE_CODE = 'en-us'
 
 #한국 시간 변경
-TIME_ZONE = 'Asia/Seoul'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = False
+USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
