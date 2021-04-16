@@ -1,15 +1,13 @@
 from django.shortcuts import render
 from .models import Posting, MusicBox
-
-#from django.utils import timezone
-
+from django.db.models import Q
 from django.views import generic
 from django.utils.safestring import mark_safe
 from django.http import HttpResponse, HttpResponseRedirect
 from .utils import Calendar
 import datetime
-
 import calendar
+#import matplotlib.pyplot as plt
 
 def showcalendar(request):
 
@@ -47,10 +45,22 @@ def next_month(day):
     month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
     return month
 
+def chart(request):
+    labels = ['Utter joy', 'Happiness', 'anger','sadness','depressed','normal']
+    emoti1 = Posting.objects.filter(emotion__contains='완전 기쁨').count()
+    emoti2 = Posting.objects.filter(emotion__contains='행복').count()
+    emoti3 = Posting.objects.filter(emotion__contains='분노').count()
+    emoti4 = Posting.objects.filter(emotion__contains='슬픔').count()
+    emoti5 = Posting.objects.filter(emotion__contains='우울').count()
+    emoti6 = Posting.objects.filter(emotion__contains='평범').count()
+    data = [emoti1, emoti2, emoti3, emoti4, emoti5, emoti6]
+    return render(request, 'main/chart.html', {'labels':labels, 'data':data})
 
 
-        
 
 
+
+
+    
 
 
