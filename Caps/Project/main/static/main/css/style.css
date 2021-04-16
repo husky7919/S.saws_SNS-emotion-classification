@@ -1,39 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap");
+@font-face {
+  font-family: "BMHANNAPro";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.0/BMHANNAPro.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .calendar {
-  width: 98%;
+  width: 500px;
+  height: 300px;
   margin: auto;
-  font-size: 13px;
-}
-
-.calendar tr,
-.calendar td {
-  border: 1px solid black;
-}
-
-.calendar th {
-  padding: 10px;
+  border-radius: 0 0 1em 1em;
+  color: #555;
   text-align: center;
-  font-size: 18px;
-}
-
-.calendar td {
-  width: 200px;
-  height: 150px;
-  padding: 20px 0px 0px 5px;
+  background-color: white;
+  border: 1px solid #e1e1e1;
 }
 
 .month {
-  font-size: 25px;
+  font-size: 1.2em;
 }
 
 .date {
-  font-size: 16px;
+  font-size: 1.2em;
 }
 
-ul {
-  height: 100%;
-  padding: 0px 5px 0px 20px;
+.calendar .month {
+  color: #222222;
+  font-weight: 800;
 }
 
-a {
-  color: #17a2b8;
+.calendar th {
+  text-align: center;
+  font-size: 1.5rem;
+  border: 1px solid #000;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.calendar tr {
+  color: #e66b6b;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 1px solid #000;
+}
+
+.calendar td {
+  padding: 0.25em 0.25em;
+  transition: background 0.5s;
+  border: 1px solid #000;
+}
+
+.calendar td:hover {
+  background: #cacaca;
+  color: #fff;
+}
+
+.prev {
+  margin-left: 160px;
+  display: inline;
+  float: left;
+  border-radius: 20px;
+  padding: 5px;
+  background-color: rgba(0, 0, 255, 0.1);
+}
+.sub_title {
+  float: left;
+  margin: 0 50px;
+  font-family: "Lobster", cursive;
+  font-size: 2.5em;
+  width: 300px;
+}
+
+.next {
+  float: left;
+  border-radius: 20px;
+  padding: 5px;
+  background-color: rgba(0, 0, 255, 0.1);
+}
+
+.wrap {
+  width: 970px;
+  margin: auto auto;
+  background-color: #fcfbfc;
+  border: 1px solid #000;
+}
+
+#title {
+  font-family: "Lobster", cursive;
+  font-size: 3.5em;
+  letter-spacing: 10pt;
+  color: #fff;
+}
+
+#navmenu {
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 1.3em;
+}
+
+nav ul li {
+  width: 280px;
+  list-style: none;
+  padding: 20px 0px 0px 5px;
+}
+
+nav ul li:link {
+  text-decoration: none;
+  color: #00f;
+  cursor: hand;
+}
+
+nav ul li:hover {
+  border-radius: 20px;
+  background-color: rgba(255, 0, 0, 0.1);
+  padding: 7px 15px;
+  text-decoration: underline;
+  color: #f00;
+  cursor: hand;
+  text-align: center;
+}
+
+.header {
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(to right, #8a2387, #e94057, #f27121);
+  padding: 10px 10px;
+  text-align: left;
+}
+
+section {
+  border: 1px solid #000;
+}
+
+.menu {
+  clear: both;
+  display: inline;
+  float: left;
+  width: 200px;
+  height: 500px;
+}
+
+.content {
+  float: right;
+  width: 750px;
+  margin-left: 5px;
+}
+
+footer {
+  width: 100%;
+  background-color: rgba(0, 0, 255, 0.2);
+  border: 1px solid #000;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.clear {
+  clear: both;
 }

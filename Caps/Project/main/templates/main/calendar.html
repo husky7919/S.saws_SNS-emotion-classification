@@ -1,37 +1,60 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Bootstrap CSS -->
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"> 
-  <link rel="stylesheet" type="text/css" href="{% static 'main/css/style.css' %}"> -->
+  <link rel="stylesheet" type="text/css" href="/static/main/css/style.css">
   <title>Django Calendar App</title>
+   
 </head>
 
 <body>
-	{% block content %}
-	<div class="clearfix">
-		<a  class="btn btn-info left" href="{% url 'main:calendar' %}?{{ prev_month }}"> Previous Month </a>
-		<a 	class="btn btn-info right" href="{% url 'main:calendar' %}?{{ next_month }}"> Next Month </a>
-	</div>
-	{{ calendar }}
-	{% endblock %}
+   <div class=wrap>
+    <header class=header>
+        <div id="title">S.saw</div> 
+   </header>
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script> -->
+    <div class=clear></div>
 
-    
+    <section>
+      <div class=menu>
+         <nav id=navmenu>
+            <ul>
+               <li><a href="#">검색</a></li>
+               <li><a href="#">캘린더</a></li>
+               <li><a href="#">감정분석</a></li>
+               <li><a href="#">콘텐츠추천</a></li>
+            </ul>
+         </nav>
+      </div>
+      <div class=content>
+         <div class=nextprev>
+         <div class="toggle">
+            <div class="prev"><a  href="{% url 'main:calendar' %}?{{ prev_month }}"> << </a></div>
+            <div class="sub_title">Emotion Calendar</div>
+            <div class="next"><a   href="{% url 'main:calendar' %}?{{ next_month }}"> >> </a></div>
+         </div>
+         </div>
+         <div class=clear></div>
+         {{ calendar }}
+         </table>
+
+      </div>
+   </section>
+   
+    <div class=clear></div>
+   
+   <footer>
+        <h6 id="menu">ⓒ 2021 | S.Saws_ai_project</h6>
+      <marquee direction=up width=600>김신영 | 류현석 | 탁은영  | 박유민</marquee>
+   </footer>
+   </div>
+
 </body>
 </html>
-
