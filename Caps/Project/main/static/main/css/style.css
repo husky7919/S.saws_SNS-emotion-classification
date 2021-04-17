@@ -24,7 +24,9 @@
 }
 
 .date {
-  font-size: 1.2em;
+  font-size: 1.1em;
+  margin-left: -40px;
+  color: rgba(0, 0, 0, 0.3);
 }
 
 .calendar .month {
@@ -48,7 +50,8 @@
 }
 
 .calendar td {
-  padding: 0.25em 0.25em;
+  height: 80px;
+  width: 80px;
   transition: background 0.5s;
   border: 1px solid #000;
 }

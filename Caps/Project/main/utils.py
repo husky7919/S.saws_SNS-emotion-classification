@@ -16,20 +16,20 @@ class Calendar(HTMLCalendar):
         
 		for event in events_per_day :
 			if event.emotion == "행복" :
-				d += f'<li>😄</li>'
+				d += f'😄'
 			elif event.emotion == "완전 기쁨" :
-				d += f'<li>😆</li>' 
+				d += f'😆' 
 			elif event.emotion == "분노":
-				d += f'<li>😡</li>'	
+				d += f'😡'	
 			elif event.emotion == "슬픔":
-				d += f'<li>😢</li>'
+				d += f'😢'
 			elif event.emotion == "우울":
-				d += f'<li>😔</li>'
+				d += f'😔'
 			elif event.emotion == "평범":
-				d += f'<li>🙂</li>'
+				d += f'🙂'
 
 		if day != 0:
-			return f"<td><span class='date'>{day}</span><ul> {d} </ul></td>"
+			return f"<td valign=top><span class='date'>{day}</span><br> {d} </td>"
 		return '<td></td>'
 
 	# formats a week as a tr 
@@ -45,7 +45,7 @@ class Calendar(HTMLCalendar):
 
 		events = Posting.objects.filter(pub_date__year=self.year, pub_date__month=self.month)
 
-		cal = f'<table border="1" cellpadding="0" cellspacing="0" class="calendar">\n'
+		cal = f'<table border="0" cellpadding="0" cellspacing="0" class="calendar">\n'
 		cal += f'{self.formatmonthname(self.year, self.month, withyear=withyear)}\n'
 		cal += f'{self.formatweekheader()}\n'
 		for week in self.monthdays2calendar(self.year, self.month):

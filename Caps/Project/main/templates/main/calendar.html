@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"> 
   <link rel="stylesheet" type="text/css" href="/static/main/css/style.css">
-  <title>Django Calendar App</title>
+  <title>emotion calendar</title>
    
 </head>
 
@@ -27,8 +27,8 @@
          <nav id=navmenu>
             <ul>
                <li><a href="#">검색</a></li>
-               <li><a href="#">캘린더</a></li>
-               <li><a href="#">감정분석</a></li>
+               <li><a href="{% url 'main:calendar' %}">캘린더</a></li>
+               <li><a href="{% url 'main:chart' %}">감정분석</a></li>
                <li><a href="#">콘텐츠추천</a></li>
             </ul>
          </nav>
@@ -52,7 +52,9 @@
    
    <footer>
         <h6 id="menu">ⓒ 2021 | S.Saws_ai_project</h6>
+      <!--
       <marquee direction=up width=600>김신영 | 류현석 | 탁은영  | 박유민</marquee>
+      -->
    </footer>
    </div>
 
