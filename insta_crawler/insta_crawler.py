@@ -8,6 +8,8 @@ from  selenium import webdriver
 import time
 import pandas as pd
 import re
+from selenium.common.exceptions import NoSuchElementException
+
 options = webdriver.ChromeOptions()
 options.add_experimental_option("excludeSwitches", ["enable-logging"])
 driver = webdriver.Chrome(options=options)
@@ -36,11 +38,11 @@ time.sleep(2)
 insta_dict = {'date': [],'text': []}
 first_post = driver.find_element_by_class_name('eLAPa')
 first_post.click()
-
+num = 0
 seq = 0
 start = time.time()
  
-while True:
+while num < 11  :
     try:
         if driver.find_element_by_css_selector('a._65Bje.coreSpriteRightPaginationArrow'):
             if seq % 20 == 0:
@@ -80,10 +82,11 @@ while True:
         else:
             break
             
-    except:
+    except NoSuchElementException:
         driver.find_element_by_css_selector('a._65Bje.coreSpriteRightPaginationArrow').click()
         time.sleep(2)
+    num += 1
 
 #데이터프레임 만들고 엑셀로 저장하기
 results_df = pd.DataFrame(insta_dict)
-results_df.to_excel(r'D:\S.saws.project\새 폴더 (2)\insta_crawler.csv', index=False) 
+results_df.to_csv(r'D:\S.saws.project\repository\insta_crawler\insta_crawler.csv', index=False) 
