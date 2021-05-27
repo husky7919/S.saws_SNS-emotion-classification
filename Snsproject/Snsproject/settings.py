@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 from pathlib import Path
 import os
-import my_settings
+from Snsproject import my_settings
 from django.contrib.messages import constants as messages_constants
 
 MESSAGE_LEVEL = messages_constants.DEBUG

@@ -96,8 +96,5 @@ class BertModels:
     }
 
     def emotionR(self, sentences):
-        # return sentiment_dic[np.argmax(test_sentences([sentence]))]
-        # emoti = 1 + np.argmax(test_sentences([sentence]))
-        # context = {"emoti": emoti}
         logit = self.test_sentences([sentences])
         return np.argmax(logit)

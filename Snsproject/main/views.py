@@ -58,6 +58,7 @@ def next_month(day):
 # 모델 코드
 def analysis(request):
     userr_id = request.session.get("user1")
+    co = 0
     if userr_id:
         date = (
             Posting.objects.filter(insta=userr_id)
@@ -66,14 +67,16 @@ def analysis(request):
         )
         for i in date:
             oone_post = (Posting.objects.filter(
-                insta=userr_id).filter(pub_date__lte=i))
-            one_post = oone_post.last()
+                insta=userr_id).filter(pub_date=i))
+            one_post = oone_post.first()
             sentences = one_post.post
             logitt = MainConfig.modelss
             logit = logitt.emotionR(sentences)
             one_post.emotion = logit
             one_post.save()
-    return redirect("main:calendar")
+            co = 1
+        context = {"co": co}
+    return render(request, "main/analysis.html", context)
 
 
 def chart(request):
