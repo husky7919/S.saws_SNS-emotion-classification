@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+    <title>emotion pie-chart</title>
+    
+</head>
+<body>
+    <canvas id="myChart" width="500" height="150"></canvas>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: {{labels|safe}},
+        datasets: [{
+            label: 'emotion statistics',
+            data: {{data|safe}},
+            backgroundColor: [
+                'rgba(255, 102, 102, 0.3)',
+                'rgba(255, 255, 51, 0.3)',
+                'rgba(255, 128, 0, 0.3)',
+                'rgba(75, 192, 192, 0.3)',
+                'rgba(0, 0, 255, 0.3)',
+                'rgba(51, 251, 51, 0.3)'
+            ],
+            borderColor : [
+                'rgba(255, 102, 102, 1)',
+                'rgba(255, 255, 51, 1)',
+                'rgba(255, 128, 0, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(0, 0, 255, 1)',
+                'rgba(51, 251, 51, 1)'
+            ],
+            borderWidth : 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+</script>
+<div style="text-align:center">{{lastmonth|date:"Y-m-d"}}~{{now|date:"Y-m-d"}}</div>
+</body>
+</html>

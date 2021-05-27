@@ -1,0 +1,215 @@
+/*@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap");
+@font-face {
+  font-family: "BMHANNAPro";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.0/BMHANNAPro.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+} 
+*/
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gothic+A1:wght@200&display=swap");
+
+.wrap {
+  width: 1100px;
+  height: 570px;
+  margin: auto auto;
+  background-color: rgba(255, 149, 185, 0.507);
+  /*background-image: url("/static/main/background.jpg");*/
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+}
+
+.content {
+  width: 610px;
+  height: 500px;
+  margin: auto auto;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 15px; /*모서리 둥글기*/
+  box-shadow: rgba(0, 0, 0, 0.2) 5px 5px 2px;
+  margin: 15px 25px;
+  float: left;
+}
+
+.title {
+  width: 400px;
+  height: 60px;
+  margin: auto;
+
+  /*background-color: rgba(255, 255, 255, 0.4);*/
+
+  border-radius: 10px;
+  margin-top: 20px;
+  font-family: "Gothic A1", sans-serif;
+  color: rgba(107, 88, 88);
+  font-size: 1.2em;
+}
+
+.sub_title {
+  float: left;
+  font-family: "Gothic A1", sans-serif;
+  text-shadow: 2px 2px 2px gray;
+  margin: -15px 0 0 10px;
+  border-radius: 50px;
+  text-align: center;
+}
+
+.prev {
+  display: inline;
+  width: 30px;
+  height: 30px;
+  margin-top: 13px;
+  margin-left: 5px;
+  float: left;
+  border-radius: 100%;
+  /*background-color: #e788f0;*/
+}
+
+.next {
+  display: inline;
+  width: 30px;
+  height: 30px;
+  margin-top: 13px;
+  margin-right: 10px;
+  float: right;
+  border-radius: 100%;
+  /*background-color: #e788f0;*/
+}
+
+.main {
+  width: 570px;
+  height: 400px;
+  border-radius: 50px;
+  background-color: #ffffff;
+  margin-top: 0px;
+  margin-left: 20px;
+}
+.calendar {
+  width: 540px;
+  margin: auto auto;
+}
+
+td {
+  width: 77px;
+  height: 50px;
+}
+#chart {
+  margin: auto auto;
+}
+
+.menu_left {
+  width: 200px;
+  height: 500px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 15px; /*모서리 둥글기*/
+  box-shadow: rgba(0, 0, 0, 0.2) 5px 5px 2px;
+  margin: 15px 10px;
+  float: left;
+}
+
+.insta_id {
+  text-overflow: ellipsis;
+  width: 150px;
+  height: 50px;
+  font-family: "Gothic A1", sans-serif;
+  font-size: 1.3em;
+  margin: auto auto;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(to right, #8a2387, #e94057, #f27121);
+  border: 3px solid #000;
+  border-radius: 100%;
+  margin-top: 50px;
+  margin-left: 45px;
+}
+
+.menu_right {
+  width: 200px;
+  height: 500px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 15px; /*모서리 둥글기*/
+  box-shadow: rgba(0, 0, 0, 0.2) 5px 5px 2px;
+  margin: 15px 10px;
+  float: right;
+}
+
+#navmenu {
+  font-family: "Gothic A1", sans-serif;
+  font-size: 1.3em;
+}
+
+nav#navmenu2 ul li {
+  font-family: "Gothic A1", sans-serif;
+  width: 280px;
+  list-style: none;
+  font-size: 1.3em;
+  margin-left: -20px;
+  padding: 20px 0px 0px 0px;
+}
+
+nav ul li {
+  width: 280px;
+  list-style: none;
+  padding: 10px 0px 0px 5px;
+}
+
+nav ul li a {
+  width: 280px;
+  list-style: none;
+  padding: 10px 0px 0px 10px;
+  color: rgb(85, 82, 82);
+}
+
+nav ul li:link {
+  text-decoration: none;
+  color: rgb(145, 145, 223);
+  cursor: hand;
+}
+
+#day {
+  font-family: "Balsamiq Sans", cursive;
+  font-size: 1.3em;
+  margin-left: 15px;
+  margin-left: 45px;
+}
+
+#font {
+  font-family: "Gothic A1", sans-serif;
+  font-size: 1.3em;
+  margin-left: 15px;
+  margin-left: 45px;
+}
+
+#font01 {
+  font-family: "Gothic A1", sans-serif;
+  font-size: 0.9em;
+  margin-left: 15px;
+}
+
+#music {
+  list-style: none;
+  display: inline;
+  font-size: 5em;
+  letter-spacing: 20px;
+  padding-left: 70px;
+}
+
+a:link {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}

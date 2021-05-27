@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>recommend music</title>
+</head>
+<body>
+    {% block content %}
+    {% for emo in emot %}
+
+        <div>{{emo.pub_date|date:"Y-m-d"}} </div>
+        <div>{{emo.emotion}} 감정에 추천합니다!</div>
+        
+    {% endfor %} 
+    <div>링크를 클릭하면 음악을 들을 수 있습니다!</div>
+    {% for musicname in musics  %}
+        <li>{{musicname.music}}</li>
+        <li><a href="{{musicname.url}}">{{musicname.url}}</a></li>
+    
+    {% endfor %}    
+
+    {% endblock %}
+</body>
+</html>
