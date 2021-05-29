@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Posting, MusicBox
 from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
@@ -80,12 +80,13 @@ def analysis(request):
 
 
 def chart(request):
+    userr_id = request.session.get("user1")
     labels = ["anger", "fear", "joy", "love", "sadness", "suprise"]
     emoti1, emoti2, emoti3, emoti4, emoti5, emoti6 = 0, 0, 0, 0, 0, 0
     now = timezone.now()
     lastmonth = now - relativedelta(months=1)
     emoti = Posting.objects.exclude(
-        pub_date__gte=now).filter(pub_date__gte=lastmonth)
+        pub_date__gte=now).filter(pub_date__gte=lastmonth).filter(insta=userr_id)
     for x in emoti:
         if x.emotion == "0":
             emoti1 += 1
@@ -116,23 +117,28 @@ def reco_music(request):
 
     for x in emot:
 
-        if x.emotion == "anger":
+        if x.emotion == "0":
             musics = MusicBox.objects.filter(emoti__contains="anger")[:3]
 
-        elif x.emotion == "sadness":
+        elif x.emotion == "4":
             musics = MusicBox.objects.filter(emoti__contains="sadness")[:3]
 
-        elif x.emotion == "fear":
+        elif x.emotion == "1":
             musics = MusicBox.objects.filter(emoti__contains="fear")[:3]
 
-        elif x.emotion == "love":
+        elif x.emotion == "3":
             musics = MusicBox.objects.filter(emoti__contains="love")[:3]
 
-        elif x.emotion == "suprise":
+        elif x.emotion == "5":
             musics = MusicBox.objects.filter(emoti__contains="suprise")[:3]
 
-        elif x.emotion == "joy":
+        elif x.emotion == "2":
             musics = MusicBox.objects.filter(emoti__contains="joy")[:3]
 
     context = {"emot": emot, "musics": musics}
     return render(request, "main/recommend.html", context)
+
+
+def detail(request, pk):
+    post_detail = get_object_or_404(Posting, pk=pk)
+    return render(request, 'main/detail.html', {'posts': post_detail})

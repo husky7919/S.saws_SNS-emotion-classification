@@ -7,4 +7,5 @@ urlpatterns = [
     path("chart/", views.chart, name="chart"),
     path("recommend/", views.reco_music, name="recommend"),
     path("analysis/", views.analysis, name="analysis"),
+    path("<int:pk>", views.detail, name="detail"),
 ]

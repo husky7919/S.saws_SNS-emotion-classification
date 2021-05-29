@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 class Posting(models.Model):
@@ -10,6 +11,10 @@ class Posting(models.Model):
 
     def __str__(self):
         return "%s %s" % (self.insta, self.emotion)
+
+    def get_absolute_url(self):
+        url = reverse("main:detail", args=[str(self.id)])
+        return f'<a href="%s">' % (url)
 
 
 class MusicBox(models.Model):

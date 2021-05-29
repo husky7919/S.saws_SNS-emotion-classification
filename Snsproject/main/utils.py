@@ -16,17 +16,17 @@ class Calendar(HTMLCalendar):
         d = ""
         for event in events_per_day:
             if event.emotion == "0":
-                d += f"😡"
+                d += event.get_absolute_url()+"😡</a>"
             elif event.emotion == "4":
-                d += f"😭"
+                d += event.get_absolute_url()+"😭</a>"
             elif event.emotion == "1":
-                d += f"😱"
+                d += event.get_absolute_url()+"😱</a>"
             elif event.emotion == "3":
-                d += f"😍"
+                d += event.get_absolute_url()+"😍</a>"
             elif event.emotion == "5":
-                d += f"😳"
+                d += event.get_absolute_url()+"😳</a>"
             elif event.emotion == "2":
-                d += f"😆"
+                d += event.get_absolute_url()+"😆</a>"
 
         if day != 0:
             return f"<td valign=top><span class='date'>{day}</span><br> {d} </td>"

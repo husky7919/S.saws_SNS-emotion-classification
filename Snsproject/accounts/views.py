@@ -40,7 +40,7 @@ def login(request):
             auth.login(request, user)
             userr = User.objects.get(username=username)
             request.session["user1"] = userr.id
-            #crawling(request, username, password)
+            crawling(request, username, password)
             return redirect("main:analysis")
         else:
             messages.info(request, "아이디 또는 비밀번호를 확인해주세요")
