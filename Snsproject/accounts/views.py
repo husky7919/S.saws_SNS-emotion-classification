@@ -94,7 +94,7 @@ def crawling(request, username, password):
     seq = 0
     start = time.time()
     # # 크롤링할 게시물의 개수를 정함
-    while num <= 2:
+    while num <= 25:
         try:
             if driver.find_element_by_css_selector(
                 "a._65Bje.coreSpriteRightPaginationArrow"
