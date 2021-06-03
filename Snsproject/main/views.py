@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Posting, MusicBox
+from .models import MusicBox, Posting
 from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
 from django.http import HttpResponse, HttpResponseRedirect
 from .utils import Calendar
 import datetime
 import calendar
+import random
 from dateutil.relativedelta import relativedelta
 from django.utils import timezone
 from django.contrib import auth
@@ -79,14 +80,9 @@ def analysis(request):
     return render(request, "main/analysis.html", context)
 
 
-def chart(request):
-    userr_id = request.session.get("user1")
-    labels = ["anger", "fear", "joy", "love", "sadness", "suprise"]
+def emoti_count(emoti):
     emoti1, emoti2, emoti3, emoti4, emoti5, emoti6 = 0, 0, 0, 0, 0, 0
-    now = timezone.now()
-    lastmonth = now - relativedelta(months=1)
-    emoti = Posting.objects.exclude(
-        pub_date__gte=now).filter(pub_date__gte=lastmonth).filter(insta=userr_id)
+    data = []
     for x in emoti:
         if x.emotion == "0":
             emoti1 += 1
@@ -102,38 +98,64 @@ def chart(request):
             emoti6 += 1
 
     data = [emoti1, emoti2, emoti3, emoti4, emoti5, emoti6]
-    context = {"labels": labels, "data": data,
-               "now": now, "lastmonth": lastmonth}
-
-    return render(request, "main/chart.html", context)
+    return data
 
 
-# 컨텐츠 추천
-def reco_music(request):
+def chart(request):
+    userr_id = request.session.get("user1")
+    labels = ["anger", "fear", "joy", "love", "sadness", "suprise"]
     now = timezone.now()
     lastmonth = now - relativedelta(months=1)
-    emot = Posting.objects.exclude(
-        pub_date__gte=now).filter(pub_date__gte=lastmonth)
+    emoti = Posting.objects.exclude(
+        pub_date__gte=now).filter(pub_date__gte=lastmonth).filter(insta=userr_id)
 
-    for x in emot:
+    data = []
+    data = emoti_count(emoti)
+    context = {"labels": labels, "data": data,
+               "now": now, "lastmonth": lastmonth}
+    return render(request, "main/chart.html", context)
+# 컨텐츠 추천
 
-        if x.emotion == "0":
-            musics = MusicBox.objects.filter(emoti__contains="anger")[:3]
 
-        elif x.emotion == "4":
-            musics = MusicBox.objects.filter(emoti__contains="sadness")[:3]
+def reco_music(request):
+    userr_id = request.session.get("user1")
+    now = timezone.now()
+    lastmonth = now - relativedelta(months=1)
+    emoti = Posting.objects.exclude(
+        pub_date__gte=now).filter(pub_date__gte=lastmonth).filter(insta=userr_id)
 
-        elif x.emotion == "1":
-            musics = MusicBox.objects.filter(emoti__contains="fear")[:3]
+    data = []
+    data = emoti_count(emoti)
+    max = data[0]
+    for i in range(0, 6):
+        if data[i] > max:
+            max = data[i]
+            maxemoti = i
 
-        elif x.emotion == "3":
-            musics = MusicBox.objects.filter(emoti__contains="love")[:3]
-
-        elif x.emotion == "5":
-            musics = MusicBox.objects.filter(emoti__contains="suprise")[:3]
-
-        elif x.emotion == "2":
-            musics = MusicBox.objects.filter(emoti__contains="joy")[:3]
+    if maxemoti == 0:
+        musics = list(MusicBox.objects.filter(emoti__contains="anger"))
+        musics = random.sample(musics, 3)
+        emot = "anger"
+    elif maxemoti == 4:
+        musics = list(MusicBox.objects.filter(emoti__contains="sadness"))
+        emot = "sadness"
+        musics = random.sample(musics, 3)
+    elif maxemoti == 1:
+        musics = list(MusicBox.objects.filter(emoti__contains="fear"))
+        emot = "fear"
+        musics = random.sample(musics, 3)
+    elif maxemoti == 3:
+        musics = list(MusicBox.objects.filter(emoti__contains="love"))
+        emot = "love"
+        musics = random.sample(musics, 3)
+    elif maxemoti == 5:
+        musics = list(MusicBox.objects.filter(emoti__contains="suprise"))
+        emot = "suprise"
+        musics = random.sample(musics, 3)
+    elif maxemoti == 2:
+        musics = list(MusicBox.objects.filter(emoti__contains="joy"))
+        emot = "joy"
+        musics = random.sample(musics, 3)
 
     context = {"emot": emot, "musics": musics}
     return render(request, "main/recommend.html", context)

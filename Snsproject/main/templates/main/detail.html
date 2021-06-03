@@ -12,7 +12,7 @@
   -->
   <link rel="stylesheet" type="text/css" href="/static/main/css/chart.css">
   <script src="https://kit.fontawesome.com/b5ddf8349a.js" crossorigin="anonymous"></script>
-  <title>emotion calendar</title>
+  <title>post detail</title>
    
 </head>
 
@@ -41,14 +41,15 @@
        </div>
        <div class=content>
           <div class=title>
-              
-              <div class="sub_title"><h2>POST</h2></div>
-              
+              <div class="sub_title"><h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+               POST</h2></div>
           </div>
           <div class=main>
-             {{posts.post}}
-             <button type="button" class="btn btn-primary btn-lg btn-block" 
-             onclick="location.href='/main/calendar/'">돌아가기</button>
+             <div class=text01><p>{{posts.post}}</p></div>
+           
+             <button type="button" class="submit-btn" 
+             onclick="location.href='/main/calendar/'"><i class="fas fa-undo-alt"></i></button>
          </tr></table>
          </div>
       </div>
@@ -59,8 +60,10 @@
                <li><a href="{% url 'main:chart' %}"><i class="fas fa-chart-pie"></i> Chart</a></li>
                <li><a href="{% url 'main:recommend' %}"><i class="fas fa-icons"></i> Recommend</a></li>
                {% if user.is_authenticated %}
-               <li><a href="{% url 'accounts:logout' %}"><i class="fas fa-sign-out-alt"></i>Log Out</a></li>
-               {% endif %}
+               <li><a href="{% url 'accounts:logout' %}"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+               <br><br><br><br><br><br><br><br><br><br><br>
+               <li><a href="{% url 'accounts:delete' %}"><i class="fas fa-user-times"></i> Sign out</a></li>
+               {% endif %}  
             </ul>
          </nav>
        </div>

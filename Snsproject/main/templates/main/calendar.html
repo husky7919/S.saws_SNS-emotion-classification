@@ -26,7 +26,7 @@
              <h4>{{request.user.username}}</h4>
             </div>
           {% else %}
-          <div class=insta_id><h4>로그인</h4></div>
+          <div class=insta_id><h4><a href="{% url 'accounts:login' %}">로그인</a></h4></div>
           {% endif %}
           <nav id=navmenu>
             <ul>
@@ -57,12 +57,15 @@
                <li><a href="{% url 'main:chart' %}"><i class="fas fa-chart-pie"></i> Chart</a></li>
                <li><a href="{% url 'main:recommend' %}"><i class="fas fa-icons"></i> Recommend</a></li>
                {% if user.is_authenticated %}
-               <li><a href="{% url 'accounts:logout' %}"><i class="fas fa-sign-out-alt"></i>Log Out</a></li>
-               {% endif %}
+               <li><a href="{% url 'accounts:logout' %}"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+               <br><br><br><br><br><br><br><br><br><br><br>
+               <li><a href="{% url 'accounts:delete' %}"><i class="fas fa-user-times"></i> Sign out</a></li>
+               {% endif %}  
             </ul>
          </nav>
        </div>
   </div>
 </div>   
+
 </body>
 </html>

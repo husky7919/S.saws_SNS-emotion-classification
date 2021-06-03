@@ -1,22 +1,34 @@
-/*@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap");
-@font-face {
-  font-family: "BMHANNAPro";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.0/BMHANNAPro.woff")
-    format("woff");
-  font-weight: normal;
-  font-style: normal;
-} 
-*/
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Gothic+A1:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+
+body {
+  background-color: rgba(255, 191, 207, 0.4);
+}
 
 .wrap {
   width: 1100px;
+  height: 530px;
+  margin: auto auto;
+  background-color: rgba(187, 187, 187, 0.8);
+  /*background-image: url("/static/main/background.jpg");*/
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+  border-radius: 10px;
+}
+
+.wrap01 {
+  width: 1100px;
   height: 570px;
   margin: auto auto;
+  text-align: center;
   background-color: rgba(255, 149, 185, 0.507);
   /*background-image: url("/static/main/background.jpg");*/
   background-position: center center;
@@ -32,11 +44,21 @@
   width: 610px;
   height: 500px;
   margin: auto auto;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(253, 252, 252, 0.9);
   border-radius: 15px; /*모서리 둥글기*/
   box-shadow: rgba(0, 0, 0, 0.2) 5px 5px 2px;
   margin: 15px 25px;
   float: left;
+}
+
+.content01 {
+  width: 610px;
+  height: 500px;
+  margin: auto auto;
+  padding-top: 20px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 15px; /*모서리 둥글기*/
+  box-shadow: rgba(0, 0, 0, 0.2) 5px 5px 2px;
 }
 
 .title {
@@ -108,7 +130,7 @@ td {
 .menu_left {
   width: 200px;
   height: 500px;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(253, 252, 252, 0.9);
   border-radius: 15px; /*모서리 둥글기*/
   box-shadow: rgba(0, 0, 0, 0.2) 5px 5px 2px;
   margin: 15px 10px;
@@ -118,28 +140,29 @@ td {
 .insta_id {
   text-overflow: ellipsis;
   width: 150px;
-  height: 50px;
+  height: 53px;
   font-family: "Gothic A1", sans-serif;
   font-size: 1.3em;
   margin: auto auto;
   overflow: hidden;
   white-space: nowrap;
+  text-align: center;
 }
 
 .logo {
   width: 100px;
   height: 100px;
   background: linear-gradient(to right, #8a2387, #e94057, #f27121);
-  border: 3px solid #000;
+  border: 1px solid #000;
   border-radius: 100%;
   margin-top: 50px;
-  margin-left: 45px;
+  margin-left: 50px;
 }
 
 .menu_right {
   width: 200px;
   height: 500px;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(253, 252, 252, 0.9);
   border-radius: 15px; /*모서리 둥글기*/
   box-shadow: rgba(0, 0, 0, 0.2) 5px 5px 2px;
   margin: 15px 10px;
@@ -187,10 +210,11 @@ nav ul li:link {
 }
 
 #font {
-  font-family: "Gothic A1", sans-serif;
-  font-size: 1.3em;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1.1em;
   margin-left: 15px;
   margin-left: 45px;
+  text-align: center;
 }
 
 #font01 {
@@ -212,4 +236,30 @@ a:link {
 }
 a:hover {
   text-decoration: none;
+}
+
+.text01 {
+  text-align: center;
+  border: 3px solid rgb(255, 255, 255);
+  height: 250px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 0.8em;
+  border-radius: 50px;
+  padding-top: 100px;
+}
+
+.submit-btn {
+  width: 170px;
+  height: 30px;
+  background-color: #f99aff;
+  border-radius: 5px;
+  border: none;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  font-family: "Gothic A1", sans-serif;
+  margin-left: 200px;
 }

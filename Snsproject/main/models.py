@@ -19,7 +19,8 @@ class Posting(models.Model):
 
 class MusicBox(models.Model):
     emoti = models.CharField(max_length=30, verbose_name="emotion name")
-    music = models.CharField(max_length=100, verbose_name="music name")
+    m_name = models.CharField(max_length=100, verbose_name="music name")
+    m_artist = models.CharField(max_length=100, verbose_name="music artist")
     url = models.URLField("URL", unique=True)
 
     def __str__(self):

@@ -4,19 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/main/css/login.css">
     <title>analysis</title>
 </head>
 <body>
+    <div class=wrap>
+        <div style=height:20px;></div>
+        <div class=content01>
+            <div class=back>
     {% if user.is_authenticated %}
-    <div>
-        <h4>{{request.user.username}}님의 감정분석을 진행하고 있습니다.</h4>
+    <br><br><br><br>
+    <div class="loader" style=margin-left:50px;></div>
+    <div class="menu">
+        
+        <h4>&nbsp;&nbsp;{{request.user.username}}님의 감정분석 중...</h4>
     </div>
     {% endif %}
-    {% if co == 1  %}
     <div>
-        <button type="button" class="btn btn-primary btn-lg btn-block" 
-            onclick="location.href='/main/calendar/'">결과화면</button>
+        &nbsp;&nbsp;
+        {% if co == 1 %}
+        <button type="button" class="submit-btn" 
+        onclick="location.href='/main/calendar/'">결과보기</button>
+            {% endif %}
+        </div>
     </div>
-    {% endif %}
+    </div>
+    </div>
 </body>
 </html>

@@ -1,0 +1,146 @@
+body {
+  background-color: rgba(255, 191, 207, 0.4);
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import url("https://fonts.googleapis.com/css2?family=Gothic+A1:wght@200&display=swap");
+
+.signup {
+  font-family: "Gothic A1", sans-serif;
+  font-size: 40px;
+}
+
+.login {
+  padding-top: 20px;
+  padding-left: 50px;
+  background-color: none;
+}
+
+.wrap {
+  width: 1100px;
+  height: 570px;
+  margin: auto auto;
+  background-color: none;
+  /*background-image: url("/static/main/background.jpg");*/
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+}
+
+.content01 {
+  width: 610px;
+  height: 500px;
+  margin: auto auto;
+  padding-top: 20px;
+  border-radius: 15px; /*모서리 둥글기*/
+}
+
+.back {
+  width: 300px;
+  height: 450px;
+  background-color: white;
+  margin: auto auto;
+  padding-left: 50px;
+  border-radius: 30px;
+  box-shadow: rgba(0, 0, 0, 0.2) 5px 5px 2px;
+}
+
+.submit-btn {
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #9c27b0, #e040fb);
+  border: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: "Ubuntu", sans-serif;
+  margin-left: 50px;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+.menu {
+  font-family: "Gothic A1", sans-serif;
+  font-size: 15px;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  margin-left: 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.sign {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 90px;
+  color: #8c55aa;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  font-size: 23px;
+}
+
+.un {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-bottom: 50px;
+  text-align: center;
+  margin-bottom: 27px;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.pass {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-bottom: 50px;
+  text-align: center;
+  margin-bottom: 27px;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.img {
+  padding-left: 85px;
+}

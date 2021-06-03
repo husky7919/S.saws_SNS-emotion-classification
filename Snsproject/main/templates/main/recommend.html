@@ -4,23 +4,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/b5ddf8349a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/static/main/css/chart.css">
     <title>recommend music</title>
 </head>
 <body>
-    {% block content %}
-    {% for emo in emot %}
-
-        <div>{{emo.pub_date|date:"Y-m-d"}} </div>
-        <div>{{emo.emotion}} 감정에 추천합니다!</div>
-        
-    {% endfor %} 
-    <div>링크를 클릭하면 음악을 들을 수 있습니다!</div>
-    {% for musicname in musics  %}
-        <li>{{musicname.music}}</li>
-        <li><a href="{{musicname.url}}">{{musicname.url}}</a></li>
-    
-    {% endfor %}    
-
-    {% endblock %}
+<div class = back> 
+    <div class=wrap>
+        <div class=menu_left>
+            <div class=logo></div>
+            {% if user.is_authenticated %}
+          <div class=insta_id>
+             <h4>{{request.user.username}}</h4>
+            </div>
+          {% else %}
+          <div class=insta_id><h4><a href="{% url 'accounts:login' %}">로그인</a></h4></div>
+          {% endif %}
+            <nav id=navmenu>
+               <ul>
+                  <li>😍love</li>
+                  <li>😆joy</li> 
+                  <li>😳surprise</li>
+                  <li>😡angry</li>
+                  <li>😭sadness</li>  
+                  <li>😱fear</li>
+               </ul>
+            </nav>
+         </div>
+         <div class=content>
+            <div class=title>
+                <div class="sub_title"><h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EMOTION RECOMMEND</h2></div>
+            </div>
+            <div class=main>
+                {% block content %}
+                <br><br>
+                <div id='font'>{{emot}} 감정에 이 음악을 추천합니다.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                <div id='font'>이모티콘을 클릭하면 들을 수 있습니다!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                <br><br> <br><br>
+                {% for musicname in musics  %}
+                    <li id="music"><a href="{{musicname.url}}"><i class="fas fa-drum"></i></a></li>
+                {% endfor %}    
+                {% endblock %}   
+            </div>
+        </div>
+        <div class=menu_right>
+            <nav id=navmenu2>
+               <ul>
+                  <li><a href="{% url 'main:calendar' %}"><i class="fas fa-calendar-alt"></i> Calendar</a></li>
+                  <li><a href="{% url 'main:chart' %}"><i class="fas fa-chart-pie"></i> Chart</a></li>
+                  <li><a href="{% url 'main:recommend' %}"><i class="fas fa-icons"></i> Recommend</a></li>
+                  {% if user.is_authenticated %}
+                  <li><a href="{% url 'accounts:logout' %}"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+                  <br><br><br><br><br><br><br><br><br><br><br>
+                  <li><a href="{% url 'accounts:delete' %}"><i class="fas fa-user-times"></i> Sign out</a></li>
+                  {% endif %}  
+               </ul>
+            </nav>
+         </div>
+    </div>
+</div>
 </body>
 </html>

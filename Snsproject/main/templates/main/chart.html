@@ -4,21 +4,74 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
-    <title>emotion pie-chart</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script src="https://kit.fontawesome.com/b5ddf8349a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/static/main/css/chart.css">
+    <title>emotion chart</title>
     
 </head>
 <body>
-    <canvas id="myChart" width="500" height="150"></canvas>
+<div class = wrap> 
+    <div class=wrap>
+        <div class=menu_left>
+            <div class=logo></div>
+            {% if user.is_authenticated %}
+            <div class=insta_id>
+               <h4>{{request.user.username}}</h4>
+              </div>
+            {% else %}
+            <div class=insta_id><h4><a href="{% url 'accounts:login' %}">로그인</a></h4></div>
+            {% endif %}
+            <nav id=navmenu>
+               <ul>
+                  <li>😍love</li>
+                  <li>😆joy</li> 
+                  <li>😳surprise</li>
+                  <li>😡angry</li>
+                  <li>😭sadness</li>  
+                  <li>😱fear</li>
+               </ul>
+            </nav>
+         </div>
+         <div class=content>
+            <div class=title>
+                <div class="sub_title"><h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    EMOTION CHART</h2></div>
+            </div>
+            <div class=main>
+                <div id=chart align=center> 
+                    <canvas id="myChart" width="380" height="380"></canvas>  
+                </div>
+            </div>
+        </div>
+         <div class=menu_right>
+            <nav id=navmenu2>
+               <ul>
+                  <li><a href="{% url 'main:calendar' %}"><i class="fas fa-calendar-alt"></i> Calendar</a></li>
+                  <li><a href="{% url 'main:chart' %}"><i class="fas fa-chart-pie"></i> Chart</a></li>
+                  <li><a href="{% url 'main:recommend' %}"><i class="fas fa-icons"></i> Recommend</a></li>
+                  {% if user.is_authenticated %}
+                  <li><a href="{% url 'accounts:logout' %}"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+                  <br><br><br><br><br><br><br><br><br><br><br>
+                  <li><a href="{% url 'accounts:delete' %}"><i class="fas fa-user-times"></i> Sign out</a></li>
+                  {% endif %}  
+                </ul>
+            </nav>
+         </div>
+    </div>
+    
 <script>
 var ctx = document.getElementById('myChart').getContext('2d');
+var  emotion_labels={{labels|safe}};
+var  emotion_datas={{data|safe}};
 var myChart = new Chart(ctx, {
-    type: 'doughnut',
+    type: 'line',
     data: {
-        labels: {{labels|safe}},
+        labels: emotion_labels,
         datasets: [{
             label: 'emotion statistics',
-            data: {{data|safe}},
+            data: emotion_datas,
             backgroundColor: [
                 'rgba(255, 102, 102, 0.3)',
                 'rgba(255, 255, 51, 0.3)',
@@ -39,16 +92,16 @@ var myChart = new Chart(ctx, {
         }]
     },
     options: {
+        responsive:false,
         scales: {
             y: {
                 beginAtZero: true
             }
-        }
+        },
     }
 });
-
-
 </script>
-<div style="text-align:center">{{lastmonth|date:"Y-m-d"}}~{{now|date:"Y-m-d"}}</div>
+
+</div>
 </body>
 </html>

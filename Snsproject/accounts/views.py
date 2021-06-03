@@ -28,7 +28,8 @@ def signup(request):
                 request.POST["username"], password=request.POST["password1"]
             )
             return redirect("accounts:login")
-    return render(request, "accounts/signup.html")
+    else:
+        return render(request, "accounts/signup.html")
 
 
 def login(request):
@@ -93,7 +94,7 @@ def crawling(request, username, password):
     seq = 0
     start = time.time()
     # # 크롤링할 게시물의 개수를 정함
-    while num < 2:
+    while num <= 2:
         try:
             if driver.find_element_by_css_selector(
                 "a._65Bje.coreSpriteRightPaginationArrow"
@@ -129,6 +130,7 @@ def crawling(request, username, password):
                 ).click()
                 time.sleep(1.5)
             else:
+                driver.quit()  # 브라우저 닫기
                 break
 
         except NoSuchElementException:
@@ -144,3 +146,10 @@ def logout(request):
         del request.session["user1"]
     auth.logout(request)
     return redirect("accounts:login")
+
+
+def delete(request):
+    if request.user.is_authenticated:
+        request.user.delete()
+        auth.logout(request)
+    return redirect('accounts:login')
