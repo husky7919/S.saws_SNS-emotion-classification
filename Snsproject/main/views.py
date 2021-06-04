@@ -75,9 +75,7 @@ def analysis(request):
             logit = logitt.emotionR(sentences)
             one_post.emotion = logit
             one_post.save()
-            co = 1
-        context = {"co": co}
-    return render(request, "main/analysis.html", context)
+    return render(request, "main/analysis.html")
 
 
 def emoti_count(emoti):

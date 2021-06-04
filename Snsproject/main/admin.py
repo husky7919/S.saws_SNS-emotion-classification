@@ -1,3 +1,4 @@
+
 from django.contrib import admin
 from .models import Posting, MusicBox
 # Register your models here.

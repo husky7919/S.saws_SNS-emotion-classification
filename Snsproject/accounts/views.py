@@ -45,7 +45,7 @@ def login(request):
             return redirect("main:analysis")
         else:
             messages.info(request, "아이디 또는 비밀번호를 확인해주세요")
-            return render(request, "accounts/login.html")
+            return redirect("account:login")
     else:
         return render(request, "accounts/login.html")
 
@@ -94,7 +94,7 @@ def crawling(request, username, password):
     seq = 0
     start = time.time()
     # # 크롤링할 게시물의 개수를 정함
-    while num <= 25:
+    while num <= 20:
         try:
             if driver.find_element_by_css_selector(
                 "a._65Bje.coreSpriteRightPaginationArrow"
@@ -130,7 +130,6 @@ def crawling(request, username, password):
                 ).click()
                 time.sleep(1.5)
             else:
-                driver.quit()  # 브라우저 닫기
                 break
 
         except NoSuchElementException:
@@ -139,6 +138,7 @@ def crawling(request, username, password):
             ).click()
             time.sleep(2)
         num += 1
+    driver.quit()  # 브라우저 닫기
 
 
 def logout(request):
