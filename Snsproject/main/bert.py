@@ -19,7 +19,7 @@ class BertModels:
             self.device = torch.device("cpu")
             print("No GPU available, using the CPU instead.")
 
-        output_dir = "C:\Capstone\Caps\Project\BertFine"
+        output_dir = ".\BertFine"
         self.model = BertForSequenceClassification.from_pretrained(output_dir)
         self.tokenizer = BertTokenizer.from_pretrained(output_dir)
 

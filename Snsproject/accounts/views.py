@@ -128,7 +128,7 @@ def crawling(request, username, password):
                 driver.find_element_by_css_selector(
                     "a._65Bje.coreSpriteRightPaginationArrow"
                 ).click()
-                time.sleep(1.5)
+                time.sleep(3)
             else:
                 break
 
@@ -136,7 +136,7 @@ def crawling(request, username, password):
             driver.find_element_by_css_selector(
                 "a._65Bje.coreSpriteRightPaginationArrow"
             ).click()
-            time.sleep(2)
+            time.sleep(3)
         num += 1
     driver.quit()  # 브라우저 닫기
 
